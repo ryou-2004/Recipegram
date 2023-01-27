@@ -4,21 +4,22 @@ h1.pageTitle
   = attachment_image_tag @user, :profile_image, fallback: 'no-image.png', class: "profile_image is-rounded"
   .profile
     .top_profile
-      p.user_name= @user.username
+      p.user_name = @user.username
       - if current_user != nil
         - if @user.id == current_user.id
           p.user_email= @user.email
           td
             = link_to "編集", edit_user_path(@user)
     p.user_profile= @user.profile
-.mypage_recipe_container
+.container
   - @user.recipes.each do |recipe|
     .card
-      = attachment_image_tag recipe, :image
-      = button_to "このレシピを見る", recipe_path(recipe), method: :get
-      - if current_user != nil
-        - if @user.id == current_user.id
-          = button_to "このレシピを編集する", edit_recipe_path(recipe), method: :get
-          = button_to "このレシピを削除する", recipe_path(recipe), { method: :delete, form: { data: { turbo_confirm: "本当に削除しますか？" } } }
-      = recipe.updated_at.strftime("%Y-%m-%d %H:%M")
-      | 更新 
+      .recipe_img
+        = attachment_image_tag recipe, :image
+      .buttons 
+        = button_to "このレシピを見る", recipe_path(recipe), method: :get
+        - if current_user != nil
+          - if @user.id == current_user.id
+            = button_to "このレシピを編集する", edit_recipe_path(recipe), method: :get
+            = button_to "このレシピを削除する", recipe_path(recipe), { method: :delete, form: { data: { turbo_confirm: "本当に削除しますか？" } } }
+      p #{recipe.updated_at.strftime("%Y-%m-%d %H:%M")}更新
