@@ -1,0 +1,13 @@
+h1
+  | Recipes#new
+p
+  | Find me in app/views/recipes/new.html.erb
+= form_for @recipe do |f|
+  = f.label :title, "レシピ名"
+  = f.text_field :title
+  = f.label :body, "作り方"
+  = f.text_area :body
+  | > 
+  = f.label :image, "写真"
+  = f.attachment_field :image
+  = f.submit "投稿"

@@ -1,0 +1,14 @@
+h1
+  | Users#edit
+p
+  | Find me in app/views/users/edit.html.erb
+= form_for @user do |f|
+  = f.label :username, "ユーザー名"
+  = f.text_field :username
+  = f.label :email, "メールアドレス"
+  = f.text_field :email
+  = f.label :profile, "プロフィール"
+  = f.text_field :profile
+  = f.label :profile_image, "プロフィール画像"
+  = f.attachment_field :profile_image
+  = f.submit "更新"
