@@ -1,5 +1,12 @@
 h1.pageTitle
   | ユーザー編集
+- if @user.errors.any?
+  .notification.is-danger
+    h2 = pluralize(@user.errors.count,'error')
+    ul 
+      - @user.errors.full_messages.each do |message|
+        li = message
+      end 
 .edit_form 
   = form_for @user do |f|
     .input_content 
