@@ -1,4 +1,8 @@
-h1
-  | Home#index
-p
-  | Find me in app/views/home/index.html.erb
+h1.home_title.is-4[style="font-family: cursive;"]
+  | Recipegram
+.home_buttons
+  .button 
+    = link_to 'ログイン', new_user_session_path 
+  .button 
+    = link_to '新規登録', new_user_registration_path 
+= image_tag ('meal.png'), class:'main-image'

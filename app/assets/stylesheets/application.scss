@@ -14,20 +14,22 @@
  *= require_self
  */
 
- @import "bulma";
+@import "bulma";
 
- .navbar{
+.navbar {
    background-color: yellow;
    height: 60px;
-   .navbar-item{
+
+   .navbar-item {
       justify-content: center;
       align-items: center;
       margin: 10px;
    }
- }
- .pageTitle{
+}
+
+.pageTitle {
    height: 100px;
-   color:white;
+   color: white;
    font-size: 30px;
    display: flex;
    flex-direction: column;
@@ -37,6 +39,12 @@
    background-color: green;
 }
 
- .profile_image{
-    border-radius: 50%;
- }
+.profile_image {
+   border-radius: 50%;
+}
+
+.main-image {
+   height: 940px;
+   background-repeat: no-repeat;
+   background-size: contain;
+}
