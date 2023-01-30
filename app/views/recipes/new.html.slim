@@ -2,6 +2,7 @@ h1.pageTitle
   | 新規レシピ作成
 - if @recipe.errors.any?
   .notification.is-danger
+    h2 = pluralize(@recipe.errors.count,'error')
     ul 
       - @recipe.errors.full_messages.each do |message|
         li = message
