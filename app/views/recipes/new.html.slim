@@ -1,5 +1,11 @@
 h1.pageTitle
   | 新規レシピ作成
+- if @recipe.errors.any?
+  .notification.is-danger
+    ul 
+      - @recipe.errors.full_messages.each do |message|
+        li = message
+      end 
 .recipe_form
   = form_for @recipe do |f|
     .recipe_input_content 
