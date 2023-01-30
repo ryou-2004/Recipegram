@@ -1,14 +1,20 @@
 h1.pageTitle
   | レシピ編集
-.recipe_form
+.edit_form
   = form_for @recipe do |f|
-    .recipe_input_content 
-      = f.label :title, "レシピ名"
-      = f.text_field :title
-    .recipe_input_content 
-      = f.label :body, "作り方"
-      = f.text_area :body
-    .recipe_input_content 
-      = f.label :image, "写真"
-      = f.attachment_field :image
+    .input_content 
+      .input_label
+        = f.label :title, "レシピ名"
+      .input_field
+        = f.text_field :title
+    .input_content 
+      .input_label
+        = f.label :body, "作り方"
+      .input_field
+        = f.text_area :body,class:"input_area"
+    .input_content 
+      .input_label
+        = f.label :image, "写真"
+      .input_field
+        = f.attachment_field :image
     = f.submit "更新",class:"recipe_submit"

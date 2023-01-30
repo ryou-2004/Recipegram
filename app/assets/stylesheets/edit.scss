@@ -1,0 +1,23 @@
+.edit_form{
+  display: flex;
+  margin-right: auto;
+  margin-left: auto;
+  justify-content: center;
+  align-items: center;
+  .input_content{
+    width: 100%;
+    margin-bottom: .5em;
+    .input_field{
+      width: 100%;
+      input,textarea{
+        width: 100%;
+      }
+    }
+    .input_area{
+      height: 200px;
+    }
+  }
+  form{
+    width: 50%;
+  }
+}
