@@ -11,7 +11,7 @@ h1.page_title
           td
             = link_to "編集", edit_user_path(@user)
     p.user_profile= simple_format @user.profile
-.container
+.user_show
   - @user.recipes.each do |recipe|
     .card
       .recipe_img
