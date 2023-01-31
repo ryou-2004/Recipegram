@@ -1,0 +1,19 @@
+= form_for @user do |f| 
+
+  p 
+    = f.label :username, "ユーザー名"
+    = f.text_field :username
+      
+  p 
+    = f.label :email, "メールアドレス"
+    = f.text_field :email
+
+  p 
+    = f.label :profile, "プロフィール"
+    = f.text_area :profile, class:"input_area"
+
+  p 
+    = f.label :profile_image, "プロフィール画像"
+    = f.attachment_field :profile_image
+
+  p.submit-fixed = f.submit "更新"

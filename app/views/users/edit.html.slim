@@ -7,26 +7,5 @@ h1.page_title
       - @user.errors.full_messages.each do |message|
         li = message
       end 
-.edit_form 
-  = form_for @user do |f|
-    .input_content 
-      .input_label
-        = f.label :username, "ユーザー名"
-      .input_field
-        = f.text_field :username
-    .input_content 
-      .input_label
-        = f.label :email, "メールアドレス"
-      .input_field
-        = f.text_field :email
-    .input_content 
-      .input_label
-        = f.label :profile, "プロフィール"
-      .input_field
-        = f.text_area :profile, class:"input_area"
-    .input_content 
-      .input_label
-        = f.label :profile_image, "プロフィール画像"
-      .input_field
-        = f.attachment_field :profile_image
-    = f.submit "更新"
+
+div.user_edit-form == render 'form'

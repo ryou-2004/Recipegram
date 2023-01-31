@@ -1,0 +1,13 @@
+= form_for @recipe do |f|
+  p 
+    = f.label :title, "レシピ名"
+    = f.text_field :title
+
+  p 
+    = f.label :body, "作り方"
+    = f.text_area :body,class:"input_area"
+
+  p 
+    = f.label :image, "写真"
+    = f.attachment_field :image
+  p.submit-fixed = f.submit "登録",class:"recipe_submit"

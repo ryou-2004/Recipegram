@@ -1,20 +1,12 @@
 h1.page_title
   | レシピ編集
-.edit_form
-  = form_for @recipe do |f|
-    .input_content 
-      .input_label
-        = f.label :title, "レシピ名"
-      .input_field
-        = f.text_field :title
-    .input_content 
-      .input_label
-        = f.label :body, "作り方"
-      .input_field
-        = f.text_area :body,class:"input_area"
-    .input_content 
-      .input_label
-        = f.label :image, "写真"
-      .input_field
-        = f.attachment_field :image
-    = f.submit "更新",class:"recipe_submit"
+
+- if @recipe.errors.any?
+  .notification.is-danger
+    h2 = pluralize(@recipe.errors.count,'error')
+    ul 
+      - @recipe.errors.full_messages.each do |message|
+        li = message
+      end 
+
+div.user_edit-form == render 'form'

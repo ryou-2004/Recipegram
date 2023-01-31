@@ -1,5 +1,6 @@
 h1.page_title
   | 新規レシピ作成
+
 - if @recipe.errors.any?
   .notification.is-danger
     h2 = pluralize(@recipe.errors.count,'error')
@@ -7,15 +8,5 @@ h1.page_title
       - @recipe.errors.full_messages.each do |message|
         li = message
       end 
-.recipe_form
-  = form_for @recipe do |f|
-    .recipe_input_content 
-      = f.label :title, "レシピ名"
-      = f.text_field :title
-    .recipe_input_content
-      = f.label :body, "作り方"
-      = f.text_area :body
-    .recipe_input_content
-      = f.label :image, "写真"
-      = f.attachment_field :image
-    = f.submit "投稿",class:"recipe_submit"
+
+div.user_edit-form == render 'form'
