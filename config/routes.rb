@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   end
   devise_for :users
   root to: "home#index"
-  resources :users
   resources :recipes
-
+  resources :users do
+    resource :relationships, only: %i[create destroy]
+    get 'followings' => 'relationships#followings', as: 'followings'
+    get 'followers' => 'relationships#followers', as: 'followers'
+  end
 end
