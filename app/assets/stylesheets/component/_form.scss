@@ -14,10 +14,7 @@ form{
   textarea{
     height: 10em;
   }
-  .submit-fixed{
-
-  }
-  input:not([type=submit]),textarea{//submitボタン以外のinputとtextarea
+  input:not([type="submit"]),textarea{//submitボタン以外のinputとtextarea
     border-radius: 2px;
     border-width: 1px;
     border-style: solid;

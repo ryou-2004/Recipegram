@@ -1,29 +1,29 @@
 .user_profile_content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px 0;
+  .top_profile{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 25px 0;
-    .top_profile{
-        display: flex;
-        flex-wrap: wrap;
-        margin-bottom: 30px;
-        .user_name{
-            margin-left: 0px;
-            font-weight: bold;
-        }
-        p,a{
-            margin: 0px 20px;
-        }
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    .user_name{
+      margin-left: 0px;
+      font-weight: bold;
     }
-    .profile_image{
-        width: 100px;
-        height: 100px;
-        margin: 0px 75px;
+    p,a{
+      margin: 0px 20px;
     }
+  }
+  .profile_image{
+    width: 100px;
+    height: 100px;
+    margin: 0px 75px;
+  }
 }
 .mypage_recipe_container{
-    padding: 20px;
-    .card{
-        width: 400px;
-    }
+  padding: 20px;
+  .card{
+    width: 400px;
+  }
 }
