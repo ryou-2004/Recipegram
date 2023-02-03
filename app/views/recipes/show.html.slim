@@ -13,7 +13,7 @@ h1.page_title
     = link_to user_path(@recipe.user), class:"user_name" do
       | By  
       = @recipe.user.username
-    p.profile = simple_format @recipe.user.profile
+    .profile = simple_format @recipe.user.profile
     = link_to user_path(@recipe.user) do
       = @recipe.user.username
       | さんのページへ 
