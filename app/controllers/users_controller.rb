@@ -14,18 +14,14 @@ class UsersController < ApplicationController
       redirect_to users_path, alert: '不正なアクセスです。'
     end
   end
-  
+
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
     redirect_to user_path(@user), notice: '更新に成功しました。'
     else
-      render :edit,  status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
-  end
-
-  def follow
-    
   end
 
   private
