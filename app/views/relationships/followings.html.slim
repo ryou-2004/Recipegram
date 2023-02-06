@@ -1,4 +1,2 @@
-h1.page_title フォロー一覧
-.users_index
-  .users
-    == render 'user_list'
+h1.page_title = "#{current_user.username}のフォロー一覧"
+== render 'user_list', nomessage: 'フォローしている人がいません。'
