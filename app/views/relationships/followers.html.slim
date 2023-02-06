@@ -1,2 +1,2 @@
-h1.page_title = "#{current_user.username}のフォロワー一覧"
-== render 'user_list', nomessage: 'フォロワーがいません。'
+h1.page_title = "#{@user.username}のフォロワー一覧"
+== render 'user_list', nomessage: 'フォロワーがいません。', followers: true

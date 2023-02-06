@@ -1,4 +1,11 @@
 .users_index
+  .tab 
+    - if followers
+      = link_to 'フォロー中', user_followings_path(@user.id)
+      = link_to 'フォロワー'
+    -else
+      = link_to 'フォロー中'
+      = link_to 'フォロワー', user_followers_path(@user.id)
   .users
     - if @users.exists?
       - @users.each do |user|
