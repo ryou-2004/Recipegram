@@ -44,7 +44,7 @@
   .top_profile{
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     .user_name{
       margin-left: 0px;
       font-weight: bold;
@@ -52,6 +52,10 @@
     p,a{
       margin: 0px 20px;
     }
+  }
+  .follow_folloed{
+    display: flex;
+    margin-bottom: 10px;
   }
   .profile_image{
     width: 100px;
