@@ -6,7 +6,7 @@ class Recipe < ApplicationRecord
   validates :body, presence: true
   validates :image, presence: true
   
-  has_many :favorites, class_name: 'Favorite', foreign_key: 'user_id', dependent: :destroy
+  has_many :favorites, class_name: 'Favorite', dependent: :destroy
   # いいねしたユーザー一覧で使う
-  has_many :users, through: :favorites, source: :recipe
+  has_many :favousers, through: :favorites, source: :user
 end

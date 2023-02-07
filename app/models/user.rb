@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
   validates :username, presence: true
 
-  has_many :favorites, class_name: 'Favorite', foreign_key: 'recipe_id', dependent: :destroy
+  has_many :favorites, class_name: 'Favorite', dependent: :destroy
   # いいねしたレシピ一覧画面で使う
   has_many :favorecipes, through: :favorites, source: :recipe
 
@@ -35,12 +35,12 @@ class User < ApplicationRecord
   end
 
   # いいねをしたときの処理
-  def favorite(recipe_id,user_id)
-    favorites.create(recipe_id: recipe_id, user_id: user_id)
+  def favorite(recipe_id, user_id)
+    favorites.create(user_id: user_id, recipe_id: recipe_id)
   end
 
   # いいねを外すときの処理
-  def unfavorite(recipe_id,user_id)
+  def unfavorite(recipe_id, user_id)
     favorites.find_by(recipe_id: recipe_id, user_id: user_id).destroy
   end
 
