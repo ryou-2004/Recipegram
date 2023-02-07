@@ -9,3 +9,7 @@
     p.update 
       = recipe.updated_at.strftime("%Y-%m-%d %H:%M")
       | 更新 
+      -if current_user.favoriting?(recipe)
+        = button_to "いいね解除", recipe_favorite_path(recipe.id), method: :delete
+      -else
+        = button_to "いいねする", recipe_favorite_path(recipe.id), method: :post

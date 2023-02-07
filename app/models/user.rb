@@ -8,6 +8,10 @@ class User < ApplicationRecord
 
   validates :username, presence: true
 
+  has_many :favorites, class_name: 'Favorite', foreign_key: 'recipe_id', dependent: :destroy
+  # いいねしたレシピ一覧画面で使う
+  has_many :favorecipes, through: :favorites, source: :recipe
+
   # フォローをした、されたの関係
   has_many :relationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'followed_id', dependent: :destroy
@@ -28,5 +32,19 @@ class User < ApplicationRecord
   # フォローしているか判定
   def following?(user)
     followings.include?(user)
+  end
+
+  # いいねをしたときの処理
+  def favorite(recipe_id,user_id)
+    favorites.create(recipe_id: recipe_id, user_id: user_id)
+  end
+
+  # いいねを外すときの処理
+  def unfavorite(recipe_id,user_id)
+    favorites.find_by(recipe_id: recipe_id, user_id: user_id).destroy
+  end
+
+  def favoriting?(recipe)
+    favorecipes.include?(recipe)
   end
 end
