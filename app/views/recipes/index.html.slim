@@ -1,20 +1,17 @@
 h1.page_title
   | レシピ一覧
 div.container_recipe.center_container
-  .tab 
-    p 最新
-    p フォロー中
-    p 人気順
+  ul.tab_buttons
+      p.tab.tab-active = '最新'
+      p.tab = 'フォロー中'
+      p.tab = '人気順'
   .container
-    -current_user.followings.each do |user|
-      - user.recipes.each do |recipe|
-        .card
-          = link_to recipe_path(recipe), class:'recipe_img' do
-            = attachment_image_tag recipe, :image
-          .user_profile
-            = link_to user_path(recipe.user.id) do
-              = attachment_image_tag recipe.user, :profile_image, fallback: "no-image.png"
-            = link_to recipe.user.username, user_path(recipe.user.id), class:"user_name"
-          p.update 
-            = recipe.updated_at.strftime("%Y-%m-%d %H:%M")
-            | 更新 
+    .tabbox.box-show
+      //== render 'recipe_list', recipes: @recipes
+      p 最新
+    .tabbox 
+      /-current_user.followings.each do |user|
+      /  == render 'recipe_list', recipes: user.recipes
+      p フォロー中
+    .tabbox 
+      p 人気順

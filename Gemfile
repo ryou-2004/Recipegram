@@ -77,3 +77,4 @@ gem "refile-mini_magick"
 gem "bulma-rails"
 gem "slim-rails"
 gem "html2slim"
+gem 'jquery-rails'
