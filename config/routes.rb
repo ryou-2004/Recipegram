@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   end
   resources :recipes do
     resource :favorite, only: %i[create destroy]
+    get 'like' => 'favorites#favousers', as: 'users'
   end
 end

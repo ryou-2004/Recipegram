@@ -12,16 +12,15 @@ class FavoritesController < ApplicationController
   end
 
   # いいねをしているツイート一覧
-  def followings
+  def favorecipes
     user = User.find(params[:user_id])
     @user = user
     @recipes = user.favorecipes
   end
 
   # いいねをしている人一覧
-  def followers
+  def favousers
     recipe = Recipe.find(params[:recipe_id])
     @recipe = recipe
-    @users = recipe.users
   end
 end
