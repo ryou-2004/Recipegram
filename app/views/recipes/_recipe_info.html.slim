@@ -6,7 +6,8 @@ h1.page_title
     .recipe_information
       h2 
         = @recipe.title
-      = link_to "#{@recipe.favousers.count}件のいいね", recipe_users_path(@recipe)
+      -if(0 < @recipe.favousers.count)
+        = link_to "#{@recipe.favousers.count}件のいいね", recipe_users_path(@recipe)
       p.recipe_body_title
         | レシピ
       = simple_format @recipe.body
