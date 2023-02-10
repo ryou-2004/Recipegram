@@ -11,7 +11,8 @@
       | 更新 
     .test 
       = link_to "#{recipe.favousers.count}いいね"
-      -if current_user.favoriting?(recipe)
-        = button_to "いいね解除", recipe_favorite_path(recipe.id), method: :delete
-      -else
-        = button_to "いいねする", recipe_favorite_path(recipe.id), method: :post
+      - if current_user!=nil
+        -if current_user.favoriting?(recipe)
+          = button_to "いいね解除", recipe_favorite_path(recipe.id), method: :delete
+        -else
+          = button_to "いいねする", recipe_favorite_path(recipe.id), method: :post

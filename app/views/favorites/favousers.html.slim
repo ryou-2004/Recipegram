@@ -1,2 +1,10 @@
-h1
-  | いいねしたユーザー
+.favo_user
+  .back 
+    ==render '/recipes/recipe_info'
+  =link_to '', recipe_path(@recipe), class: 'back_button'
+  .popup
+    h1.pop_title
+      | いいねしたユーザー
+    .users_index
+      .favo_user_list
+        ==render '/users/user_list', users: @users

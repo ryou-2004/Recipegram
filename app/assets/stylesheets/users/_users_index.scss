@@ -1,9 +1,18 @@
 .users_index{
-  .users{
+  .user_list{
     display: flex;
     flex-direction: column;
     justify-content: start;
     height: 100vh;
+  }
+  .favo_user_list{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    margin-right: auto;
+    margin-left: auto;
+    height: 500px;
+    width: 400px;
   }
   .card_user{
     width: 100%;
