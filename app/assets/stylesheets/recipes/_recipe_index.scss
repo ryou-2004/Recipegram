@@ -37,5 +37,14 @@
         margin-left: 20px;
       }
     }
+    .recipe_reaction{
+      display: flex;
+      align-items: center;
+      .button_to{
+      }
+      button{
+        width: fit-content;
+      }
+    }
   }
 }
