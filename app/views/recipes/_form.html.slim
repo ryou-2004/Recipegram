@@ -1,4 +1,4 @@
-= form_for @recipe do |f|
+= form_for @recipe, id: 'form' do |f|
   p 
     = f.label :title, "レシピ名"
     = f.text_field :title
@@ -10,4 +10,24 @@
   p 
     = f.label :image, "写真"
     = f.attachment_field :image
+
+  p 
+    = f.label :hashtags, "ハッシュタグ"
+    = text_field_tag :hashtag
+    = text_field_tag :hashtag
+    = text_field_tag :hashtag
+
+  = hidden_field_tag 'hashtags', value: '', id: "hashtags"
+
   p.submit-fixed = f.submit "登録",class:"recipe_submit"
+
+javascript:
+  $('form').submit(function(event){
+    let hashtags = $("[name='hashtag']");
+    let values = [];
+    hashtags.each(function(){
+      values.push($(this).val());
+    });
+    console.log(values.join(' '));
+    $("#hashtags").val(values.join(' '));
+  });

@@ -1,12 +1,4 @@
-h1.page_title
-  | 新規レシピ作成
-
-- if @recipe.errors.any?
-  .notification.is-danger
-    h2 = pluralize(@recipe.errors.count,'error')
-    ul 
-      - @recipe.errors.full_messages.each do |message|
-        li = message
-      end 
-
-== render 'form'
+.center_container
+  h1.page_title
+    | 新規レシピ作成
+  == render 'form'

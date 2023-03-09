@@ -15,6 +15,12 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.user_id = current_user.id
+    hashtags = params[:hashtags].split(' ')
+    hashtags.each do |tag|
+      hashtag = Hashtag.find_or_create_by(name: tag)
+      @recipe.hashtags << hashtag
+    end
+
     if @recipe.save
       redirect_to recipe_path(@recipe), notice: '投稿に成功しました。'
     else
