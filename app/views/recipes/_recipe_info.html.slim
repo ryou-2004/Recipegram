@@ -7,8 +7,11 @@
       .recipe_information
         h2 
           = @recipe.title
+        .hashtags
+          -@recipe.hashtags.each do |tag|
+            = link_to "##{tag.name} ", "topic/#{tag.name}"
         -if(0 < @recipe.favousers.count)
-          = link_to "#{@recipe.favousers.count}件のいいね", recipe_users_path(@recipe)
+          p = link_to "#{@recipe.favousers.count}件のいいね", recipe_users_path(@recipe)
         p.recipe_body_title
           | レシピ
         = simple_format @recipe.body
