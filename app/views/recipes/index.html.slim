@@ -1,6 +1,5 @@
 div.container_recipe.center_container
-  h1.page_title
-    | レシピ一覧
+  h1.page_title レシピ一覧
   ul.tab_buttons
       p.tab.tab-active = '最新'
       p.tab = 'フォロー中'
@@ -13,5 +12,7 @@ div.container_recipe.center_container
         == render 'recipe_list', recipes: user.recipes
     .tabbox 
       p 人気順
-div.side-bar
-  p サイドバー
+.side-bar 
+  .osusume 
+    h2 おすすめレシピ
+    = link_to 'ひなあられ', recipes_path
