@@ -10,25 +10,45 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_importmap_tags
   body
-    - if flash[:notice]
-      .notification.is-info
-        p.notice
-          = notice
-    - if flash[:alert]
-      .notification.is-danger
-        p.alert
-          = alert
-    div.navbar
-      = link_to root_path, class: "navbar-item" do
-        h1.title.is-4[style="font-family: cursive;"]
-          | Recipegram
-      = link_to "レシピグラマー一覧", users_path, class: "navbar-item button"
-      = link_to "レシピ一覧", recipes_path, class: "navbar-item button"
-      - if user_signed_in?
-        = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "navbar-item button"
-        = link_to "マイページへ", user_path(current_user.id), class: "navbar-item button"
-        = link_to "新規投稿", new_recipe_path, class: "navbar-item button"
-      - else
-        = link_to "ログイン", new_user_session_path, class: "navbar-item button"
-        = link_to "新規登録", new_user_registration_path, class: "navbar-item button"
-    = yield
+    div.style
+      div.layer
+      div.nav-bar
+        = link_to root_path, class: "nav-bar-item" do
+          h1.title.is-4[style="font-family: cursive;"]
+            | Recipegram
+        = link_to recipes_path, class: "nav-bar-item button" do 
+          .menu-svg= image_tag 'mainMenu/home.svg', inline: true
+          span ホーム
+        = link_to recipes_path, class: "nav-bar-item button" do 
+          .menu-svg= image_tag 'mainMenu/search.svg', inline: true
+          span レシピ検索
+        = link_to recipes_path, class: "nav-bar-item button" do 
+          .menu-svg= image_tag 'mainMenu/notification.svg', inline: true
+          span 通知
+        /= link_to "レシピグラマー一覧", users_path, class: "nav-bar-item button" 
+        - if user_signed_in?
+          /= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-bar-item button"
+          = link_to user_path(current_user.id), class: "nav-bar-item button" do
+            .menu-svg= image_tag 'mainMenu/user.svg', inline: true
+            span プロフィール
+          = link_to new_recipe_path, class: "nav-bar-item button" do 
+            .menu-svg= image_tag 'mainMenu/post.svg', inline: true
+            span 新規投稿
+        - else
+          = link_to "ログイン", new_user_session_path, class: "nav-bar-item button"
+          = link_to "新規登録", new_user_registration_path, class: "nav-bar-item button"      
+      div.main
+        = yield
+
+javascript:
+  $(window).resize(function(event){
+    $(".nav-bar").width($(".layer").width());
+  });
+
+  $(document).ready(function(){
+    $(".nav-bar").width($(".layer").width());
+    $(".nav-back").fadeToggle(0);
+    $(".nav-btn").click(function(){
+      $(".nav-back").fadeToggle(500);
+    });
+  });

@@ -1,5 +1,3 @@
-import jquery from "jquery"
-window.$ = jquery
 $(function(){
   $('.tab').on('click',function(e){
     $('.tab-active').removeClass('tab-active');

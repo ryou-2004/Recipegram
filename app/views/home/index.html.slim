@@ -3,4 +3,11 @@ h1.home_title.is-4[style="font-family: cursive;"]
 .home_buttons
   = link_to 'ログイン', new_user_session_path 
   = link_to '新規登録', new_user_registration_path 
-= image_tag ('meal.png'), class:'main-image'
+
+javascript:
+  $(document).ready(function(){
+    $("#my-div").fadeToggle(0);
+    $(".nav-btn").click(function(){
+      $("#my-div").fadeToggle(500);
+    });
+  });
