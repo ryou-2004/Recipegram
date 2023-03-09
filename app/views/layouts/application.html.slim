@@ -41,12 +41,11 @@ html
         = yield
 
 javascript:
+  $(".nav-bar").width($(".layer").width());
   $(window).resize(function(event){
     $(".nav-bar").width($(".layer").width());
   });
-
   $(document).ready(function(){
-    $(".nav-bar").width($(".layer").width());
     $(".nav-back").fadeToggle(0);
     $(".nav-btn").click(function(){
       $(".nav-back").fadeToggle(500);

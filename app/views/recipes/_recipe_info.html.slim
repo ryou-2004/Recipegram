@@ -1,24 +1,25 @@
-h1.page_title
-  | レシピ詳細
-.recipe_info_content
-  .card.recipe_info_card
-    = attachment_image_tag @recipe, :image
-    .recipe_information
-      h2 
-        = @recipe.title
-      -if(0 < @recipe.favousers.count)
-        = link_to "#{@recipe.favousers.count}件のいいね", recipe_users_path(@recipe)
-      p.recipe_body_title
-        | レシピ
-      = simple_format @recipe.body
-  .card.recipe_user_card
-    = link_to user_path(@recipe.user), class:"user_name" do
-      | By  
-      = @recipe.user.username
-    .profile = simple_format @recipe.user.profile
-    = link_to user_path(@recipe.user) do
-      = @recipe.user.username
-      | さんのページへ 
-    - if current_user != nil
-      - if @recipe.user.id == current_user.id
-        = link_to "編集", edit_recipe_path(@recipe), class:"recipe_edit"
+.center_container
+  h1.page_title
+    | レシピ詳細
+  .recipe_info_content
+    .card.recipe_info_card
+      = attachment_image_tag @recipe, :image
+      .recipe_information
+        h2 
+          = @recipe.title
+        -if(0 < @recipe.favousers.count)
+          = link_to "#{@recipe.favousers.count}件のいいね", recipe_users_path(@recipe)
+        p.recipe_body_title
+          | レシピ
+        = simple_format @recipe.body
+    .card.recipe_user_card
+      = link_to user_path(@recipe.user), class:"user_name" do
+        | By  
+        = @recipe.user.username
+      .profile = simple_format @recipe.user.profile
+      = link_to user_path(@recipe.user) do
+        = @recipe.user.username
+        | さんのページへ 
+      - if current_user != nil
+        - if @recipe.user.id == current_user.id
+          = link_to "編集", edit_recipe_path(@recipe), class:"recipe_edit"
