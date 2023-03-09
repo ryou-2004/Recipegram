@@ -9,4 +9,7 @@ class Recipe < ApplicationRecord
   has_many :favorites, class_name: 'Favorite', dependent: :destroy
   # いいねしたユーザー一覧で使う
   has_many :favousers, through: :favorites, source: :user
+
+  has_many :hashtags, class_name: 'Hashtag', dependent: :destroy
+  has_many :recipehashtags, through: :recipe_hashtags
 end
