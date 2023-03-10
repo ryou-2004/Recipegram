@@ -11,7 +11,7 @@ html
     = javascript_importmap_tags
   body
     div.style
-      div.layer
+      div.nav-layer
       div.nav-bar
         = link_to root_path, class: "nav-bar-item" do
           h1.title.is-4[style="font-family: cursive;"]
@@ -36,18 +36,69 @@ html
             span 新規投稿
         - else
           = link_to "ログイン", new_user_session_path, class: "nav-bar-item button"
-          = link_to "新規登録", new_user_registration_path, class: "nav-bar-item button"      
+          = link_to "新規登録", new_user_registration_path, class: "nav-bar-item button"
       div.main
         = yield
 
 javascript:
-  $(".nav-bar").width($(".layer").width());
-  $(window).resize(function(event){
-    $(".nav-bar").width($(".layer").width());
+  $(".nav-bar").width($(".nav-layer").width());
+  let $sideElement = $(".side-element");
+  let isScroll = false;
+  if(window.innerHeight < $sideElement.height()){
+    $sideElement.removeClass("no-scroll");
+    $sideElement.addClass("scroll");
+    isScroll = true;
+  } else {
+    $sideElement.removeClass("scroll");
+    $sideElement.addClass("no-scroll");
+    isScroll = false;
+  }
+
+  $(window).resize(function(event) {
+    $(".nav-bar").width($(".nav-layer").width());
+    let $sideElement = $(".side-element");
+    if(window.innerHeight < $sideElement.height()){
+      $sideElement.removeClass("no-scroll");
+      $sideElement.addClass("scroll");
+      isScroll = true;
+    } else {
+      $sideElement.removeClass("scroll");
+      $sideElement.addClass("no-scroll");
+      isScroll = false;
+    }
   });
-  $(document).ready(function(){
-    $(".nav-back").fadeToggle(0);
-    $(".nav-btn").click(function(){
-      $(".nav-back").fadeToggle(500);
-    });
-  });
+
+  let lastScrollPos = 0;
+  let down = false;
+  let marginTop = 0
+  $(window).on("scroll", function(){
+    if(isScroll) {
+      const currentScrollPos = $(this).scrollTop();
+      let $scrollElement = $(".scroll");
+      let $topMargin = $(".top-margin");
+      if(lastScrollPos < currentScrollPos){
+        if(!down){
+          $scrollElement.css({top:"-120px",bottom:""});
+          if(currentScrollPos < marginTop) {
+            marginTop = currentScrollPos + 60
+            $topMargin.css({"margin-top": marginTop});
+          }
+          console.log("下")
+        }
+        down = true;
+      } else {
+        if(down){
+          if(currentScrollPos < 120){
+            $topMargin.css({"margin-top": 120});
+            marginTop = 120
+          } else if(currentScrollPos - marginTop > 120) {
+            marginTop = currentScrollPos - 120;
+          }
+            $topMargin.css({"margin-top": marginTop});
+          $scrollElement.css({top:"",bottom:"-120px"});
+        }
+        down = false;
+      }
+      lastScrollPos = currentScrollPos;
+    }
+  })

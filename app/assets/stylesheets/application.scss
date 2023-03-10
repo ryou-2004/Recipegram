@@ -35,12 +35,19 @@
   align-items: flex-end;
   z-index: 999;
 }
-.layer{
+.nav-layer{
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   min-width: 66px;
+}
+.side-bar{
+  .side-element{
+    background-color: yellow;
+    position: sticky;
+  }
+  .no-scroll{top: 60px;}
 }
 @media (max-width: 1022px){
   .main{
@@ -77,7 +84,7 @@
     }
   
   }
-  .layer{
+  .nav-layer{
     width: 20%;
   }
 }
@@ -91,7 +98,7 @@
   .nav-btn{
     display: none;
   }
-  .layer{
+  .nav-layer{
     width: 30%;
   }
 }
