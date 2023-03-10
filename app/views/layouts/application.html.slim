@@ -57,7 +57,7 @@ javascript:
   $(window).resize(function(event) {
     $(".nav-bar").width($(".nav-layer").width());
     let $sideElement = $(".side-element");
-    if(window.innerHeight < $sideElement.height()){
+    if(window.innerHeight < $sideElement.height()) {
       $sideElement.removeClass("no-scroll");
       $sideElement.addClass("scroll");
       isScroll = true;
@@ -71,13 +71,13 @@ javascript:
   let lastScrollPos = 0;
   let down = false;
   let marginTop = 0
-  $(window).on("scroll", function(){
+  $(window).on("scroll", function() {
     if(isScroll) {
       const currentScrollPos = $(this).scrollTop();
       let $scrollElement = $(".scroll");
       let $topMargin = $(".top-margin");
-      if(lastScrollPos < currentScrollPos){
-        if(!down){
+      if(lastScrollPos < currentScrollPos) {
+        if(!down) {
           $scrollElement.css({top:"-120px",bottom:""});
           if(currentScrollPos < marginTop) {
             marginTop = currentScrollPos + 60
@@ -86,8 +86,8 @@ javascript:
         }
         down = true;
       } else {
-        if(down){
-          if(currentScrollPos < 120){
+        if(down) {
+          if(currentScrollPos < 120) {
             $topMargin.css({"margin-top": 120});
             marginTop = 120
           } else if(currentScrollPos - marginTop > 120) {
