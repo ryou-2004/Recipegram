@@ -1,7 +1,10 @@
-.recommended-recipes,.recommended-users{
+.recommended-recipe,.recommended-user{
   border : solid 1px #333;
   margin-bottom: 20px;
-}
-.recommended-users{
-
+  border-radius: 15px;
+  padding: .7rem;
+  h2{
+    margin-bottom: .5rem;
+    font-size: 20px;
+  }
 }
