@@ -13,4 +13,5 @@ Rails.application.routes.draw do
     resource :favorite, only: %i[create destroy]
     get 'like' => 'favorites#favousers', as: 'users'
   end
+  get 'hashtags/:id', :to => 'hashtags#show'
 end

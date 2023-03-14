@@ -1,0 +1,5 @@
+.center_container
+  p ハッシュタグ検索画面
+  p = @recipes
+  - @recipes.each do |recipe|
+    p = recipe.title
