@@ -10,12 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_09_073058) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_14_053544) do
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
     t.integer "recipe_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "hashtag_counts", force: :cascade do |t|
+    t.date "date"
+    t.integer "hashtag_id", null: false
+    t.integer "count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hashtag_id"], name: "index_hashtag_counts_on_hashtag_id"
   end
 
   create_table "hashtags", force: :cascade do |t|
@@ -62,4 +71,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_09_073058) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "hashtag_counts", "hashtags"
 end

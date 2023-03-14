@@ -18,10 +18,9 @@ div.container_recipe.center_container
     .recommended-recipe
       h2 おすすめレシピ
       .recommended-recipes
-        p = link_to 'ひなあられ', recipes_path
-        p = link_to 'ひなあられ', recipes_path
-        p = link_to 'ひなあられ', recipes_path
-        p = link_to 'ひなあられ', recipes_path
+        - @ranking.each do |tag|
+          p = link_to tag.hashtag.name, recipes_path
+          p = "#{tag.count}件の投稿"
     .recommended-user
       h2 おすすめユーザー
       .recommended-users

@@ -2,6 +2,12 @@ class RecipesController < ApplicationController
    before_action :authenticate_user!, except: [:index]
   def index
     @recipes = Recipe.all
+    date1 = Date.new(2023, 1, 1)
+    date2 = Date.new(2023, 4, 1)
+    @ranking = HashtagCount.generate_ranking(5, date1, date2)
+    @ranking.each do |hashtag_count|
+      logger.debug("#{hashtag_count.hashtag.name}: #{hashtag_count.count}")
+    end
   end
 
   def show
@@ -19,6 +25,10 @@ class RecipesController < ApplicationController
     hashtags.each do |tag|
       hashtag = Hashtag.find_or_create_by(name: tag)
       @recipe.hashtags << hashtag
+      count = HashtagCount.find_or_initialize_by(hashtag: hashtag, date: Date.today)
+      count.count ||= 0 
+      count.count += 1
+      count.save
     end
 
     if @recipe.save
