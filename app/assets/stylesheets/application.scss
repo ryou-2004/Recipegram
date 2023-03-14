@@ -22,6 +22,7 @@
 }
 .main{
   display: flex;
+  justify-content: space-between;
   z-index: 100;
 }
 .nav-bar {
@@ -43,8 +44,8 @@
   min-width: 66px;
 }
 .side-bar{
+  margin: 0 10px;
   .side-element{
-    background-color: yellow;
     position: sticky;
   }
   .no-scroll{top: 60px;}
@@ -61,7 +62,6 @@
     width: 960px;
     .side-bar{
       width: 260px;
-      background-color: red;
     }
   }
 }
@@ -70,7 +70,6 @@
     width: 990px;
     .side-bar{
       width: 350px;
-      background-color: blue;
     }
   }
 }
