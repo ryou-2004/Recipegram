@@ -8,7 +8,8 @@ class HashtagsController < ApplicationController
       @hashtag_name = params[:hashtag]
     end
   end
+
   def search
-    redirect_to action: "show", hashtag: params[:searchtag]
+    redirect_to action: 'show', hashtag: params[:searchtag]
   end
 end
