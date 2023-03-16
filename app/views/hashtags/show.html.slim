@@ -1,8 +1,5 @@
-.container_recipe.center_container
-  .search_container
-    p 戻る
-    p = @hashtag.name
+.center_container
   p ハッシュタグ検索画面
-  .container
-    .tabbox.box-show
-      == render 'recipes/recipe_list', recipes: @recipes
+  p = @recipes
+  - @recipes.each do |recipe|
+    p = recipe.title
