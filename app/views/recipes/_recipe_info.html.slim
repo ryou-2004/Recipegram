@@ -9,7 +9,7 @@
           = @recipe.title
         .hashtags
           -@recipe.hashtags.each do |tag|
-            = link_to "##{tag.name} ", "topic/#{tag.name}"
+            = link_to "##{tag.name} ", "/hashtags/#{tag.id}"
         -if(0 < @recipe.favousers.count)
           p = link_to "#{@recipe.favousers.count}件のいいね", recipe_users_path(@recipe)
         p.recipe_body_title
