@@ -1,8 +1,7 @@
 .container_recipe.center_container
   .search_container
-    p 戻る
+    = link_to  "Back", :back
     p = @hashtag.name
-  p ハッシュタグ検索画面
   .container
     .tabbox.box-show
       == render 'recipes/recipe_list', recipes: @recipes
