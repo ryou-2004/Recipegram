@@ -1,1 +1,3 @@
+# frozen_string_literal: true
+
 Refile.secret_key = 'f2a00a6e729e7598e91072e35a50788f53c4df45871d7e31b079e4bd344e2029ac238a1e239956e99eae7d9c60a0c2d2847d5d2f4a8e8be1bf3d13413f3a7818'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RecipesController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
@@ -44,7 +46,6 @@ class RecipesController < ApplicationController
     if @recipe.user != current_user
       redirect_to recipes_path, alert: '不正なアクセスです。'
     end
-    
   end
 
   def update

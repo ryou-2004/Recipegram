@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HashtagCount < ApplicationRecord
   belongs_to :hashtag
 
@@ -6,6 +8,6 @@ class HashtagCount < ApplicationRecord
               .where(date: start_data..end_data)
               .order(count: :desc)
               .limit(count)
-    return ranking
+    ranking
   end
 end

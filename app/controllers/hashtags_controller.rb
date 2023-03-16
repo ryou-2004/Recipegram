@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HashtagsController < ApplicationController
   def show
     @hashtag = Hashtag.find_by(name: params[:hashtag])

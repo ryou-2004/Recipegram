@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
   devise_for :users
-  root to: "home#index"
+  root to: 'home#index'
   resources :users do
     resource :relationships, only: %i[create destroy]
     get 'followings' => 'relationships#followings', as: 'followings'
