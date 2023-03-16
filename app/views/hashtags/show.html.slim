@@ -8,3 +8,6 @@
     .tabbox.box-show
       -if !@recipes.nil?
         == render 'recipes/recipe_list', recipes: @recipes
+      - else 
+        p = "「#{@hashtag_name}」の検索結果はありません"
+        p 別のキーワードで検索してください。
