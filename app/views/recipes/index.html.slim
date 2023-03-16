@@ -1,5 +1,5 @@
 div.container_recipe.center_container
-  h1.page_title レシピ一覧
+  h1.page_title ホーム
   ul.tab_buttons
       p.tab.tab-active = '最新'
       p.tab = 'フォロー中'
@@ -19,7 +19,7 @@ div.container_recipe.center_container
       h2 おすすめレシピ
       .recommended-recipes
         - @ranking.each do |tag|
-          p.hashtag = link_to tag.hashtag.name, recipes_path
+          p.hashtag = link_to tag.hashtag.name, search_route_path(hashtag: tag.hashtag.name)
           p.count = "#{tag.count}件の投稿"
     .recommended-user
       h2 おすすめユーザー
