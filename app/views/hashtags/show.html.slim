@@ -1,7 +1,10 @@
 .container_recipe.center_container
   .search_container
-    = link_to  "Back", :back
-    p = @hashtag.name
+    .search_back
+      = link_to  "Back", :back
+    .search_box
+      .search_svg = image_tag 'mainMenu/search.svg', inline: true
+      p = @hashtag.name
   .container
     .tabbox.box-show
       == render 'recipes/recipe_list', recipes: @recipes
