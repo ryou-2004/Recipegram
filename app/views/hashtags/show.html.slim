@@ -2,9 +2,9 @@
   .search_container
     .search_back
       = link_to  "Back", :back
-    .search_box
-      .search_svg = image_tag 'mainMenu/search.svg', inline: true
-      p = @hashtag.name
+    .search_box 
+      == render 'search', tagname: @hashtag_name
   .container
     .tabbox.box-show
-      == render 'recipes/recipe_list', recipes: @recipes
+      -if !@recipes.nil?
+        == render 'recipes/recipe_list', recipes: @recipes
