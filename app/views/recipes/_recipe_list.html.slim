@@ -7,7 +7,7 @@
         = attachment_image_tag recipe.user, :profile_image, fallback: "no-image.png"
       = link_to recipe.user.username, user_path(recipe.user.id), class:"user_name"
     .recipe_reaction 
-      = button_to recipe_comment_path(recipe.id), method: :post do 
+      = button_to recipe_comment_path(recipe.id), method: :get do 
         = image_tag ('comment.png'), class:'reaction-image'
       p = "#{recipe.commusers.count}"
       = button_to recipe_favorite_path(recipe.id), method: :post do

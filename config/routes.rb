@@ -13,8 +13,10 @@ Rails.application.routes.draw do
   end
   resources :recipes do
     resource :favorite, only: %i[create destroy]
+    resource :comment, only: %i[create destroy show]
     get 'like' => 'favorites#favousers', as: 'users'
   end
+
   get 'hashtags', to: 'hashtags#show'
   get 'hashtags/:hashtag', to: 'hashtags#show', as: 'search_route'
   post 'hashtags/', to: 'hashtags#search', as: 'search_post_route'

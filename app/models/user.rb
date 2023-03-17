@@ -53,4 +53,12 @@ class User < ApplicationRecord
   def favoriting?(recipe)
     favorecipes.include?(recipe)
   end
+
+  def comment(comment, recipe_id)
+    comments.create(comment: comment, recipe_id: recipe_id)
+  end
+
+  def uncomment(comment_id)
+
+  end
 end
