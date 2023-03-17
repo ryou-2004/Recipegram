@@ -6,8 +6,8 @@
       == render 'search', tagname: @hashtag_name
   .container
     .tabbox.box-show
-      -if !@recipes.nil?
+      - if !@recipes.nil?
         == render 'recipes/recipe_list', recipes: @recipes
-      - else 
+      - elsif not @hashtag_name.blank?
         p = "「#{@hashtag_name}」の検索結果はありません"
         p 別のキーワードで検索してください。
