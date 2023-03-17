@@ -1,6 +1,7 @@
 .popup{
   z-index: 10;
   position: absolute;
+  padding: 15px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -9,6 +10,9 @@
   height: min-content;
   .users_index{
     overflow: scroll;
+  }
+  .comment_form{
+    width: 600px;
   }
 }
 .back_button{

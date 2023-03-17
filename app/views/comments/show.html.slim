@@ -4,6 +4,6 @@
   =link_to '', recipes_path, class: 'back_button'
   .popup
     h1.pop_title コメントを作成
-    = form_with utl:recipe_comment_path, method: :post do |f|
+    = form_with utl:recipe_comment_path, method: :post, class:'comment_form' do |f|
       = f.text_area :comment
       = f.submit '送信'
