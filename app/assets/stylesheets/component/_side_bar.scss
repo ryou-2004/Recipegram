@@ -16,9 +16,11 @@
       text-decoration: none;
     }
   }
-  .count{
-    margin-top: 4px;
-    color: rgb(83, 100, 113);
-    font-size: 13px;
+  .trend{
+    padding: 10px 0;
+    .count{
+      color: rgb(83, 100, 113);
+      font-size: 13px;
+    }
   }
 }

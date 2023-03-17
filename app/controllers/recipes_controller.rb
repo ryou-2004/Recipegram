@@ -5,12 +5,9 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.all
-    date1 = Date.new(2023, 1, 1)
-    date2 = Date.new(2023, 4, 1)
-    @ranking = HashtagCount.generate_ranking(5, date1, date2)
-    @ranking.each do |hashtag_count|
-      logger.debug("#{hashtag_count.hashtag.name}: #{hashtag_count.count}")
-    end
+    @day_ranking = HashtagCount.generate_ranking(1, Date.today, Date.today)
+    @week_ranking = HashtagCount.generate_ranking(1, Date.today.ago(7.days), Date.today)
+    @month_ranking = HashtagCount.generate_ranking(1, Date.today.ago(30.days), Date.today)
   end
 
   def show
