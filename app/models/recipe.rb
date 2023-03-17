@@ -12,7 +12,13 @@ class Recipe < ApplicationRecord
   # いいねしたユーザー一覧で使う
   has_many :favousers, through: :favorites, source: :user
 
+  has_many :comments, class_name: 'Comment', dependent: :destroy
+  # コメントしたユーザー一覧で使う
+  has_many :commusers, through: :comments, source: :user
+
   has_many :recipehashtags, class_name: 'RecipeHashtag', dependent: :destroy
   # ハッシュタグ一覧で使う
   has_many :hashtags, through: :recipehashtags, source: :hashtag
+
+  has_many :commenthashtags
 end

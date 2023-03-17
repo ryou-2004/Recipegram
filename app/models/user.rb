@@ -14,6 +14,10 @@ class User < ApplicationRecord
   # いいねしたレシピ一覧画面で使う
   has_many :favorecipes, through: :favorites, source: :recipe
 
+  has_many :comments, class_name: 'Comment', foreign_key: 'user_id', dependent: :destroy
+  # コメントしたレシピ一覧画面で使う
+  has_many :commrecipes, through: :comments, source: :recipe
+
   # フォローをした、されたの関係
   has_many :relationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'followed_id', dependent: :destroy
