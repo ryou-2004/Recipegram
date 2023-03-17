@@ -1,0 +1,24 @@
+.recipe_info_comments {
+  .comment{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+  }
+  .profile_image {
+    width: 48px;
+    margin-right: 10px;
+  }
+  .profile{
+    display: flex;
+    flex-direction: row;
+    .update::before{
+      content: '・';
+    }
+    .update{
+      color: rgb(83, 100, 113);
+    }
+  }
+  .body{
+    margin-top: 1px;
+  }
+}

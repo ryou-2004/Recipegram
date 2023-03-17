@@ -29,5 +29,12 @@
   .recipe_info_comments 
     - @recipe.comments.each do |comment|
       .comment
-        p.name = comment.user.username
-        p.body = comment.body
+        .profile_image 
+          = link_to user_path(comment.user.id), class:"image" do
+            = attachment_image_tag comment.user, :profile_image, fallback: "no-image.png"
+        .comment_main
+          .profile
+            p.name = comment.user.username
+            p.update = comment.updated_at.strftime("%Y-%m-%d")
+          .body
+            p = comment.body
