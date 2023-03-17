@@ -3,7 +3,7 @@ class CreateComments < ActiveRecord::Migration[7.0]
     create_table :comments do |t|
       t.integer :user_id, foreign_key: true
       t.integer :recipe_id, foreign_key: true
-      t.string :comment
+      t.string :body
 
       t.timestamps
     end

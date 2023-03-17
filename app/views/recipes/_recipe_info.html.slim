@@ -26,3 +26,8 @@
       - if current_user != nil
         - if @recipe.user.id == current_user.id
           = link_to "編集", edit_recipe_path(@recipe), class:"recipe_edit"
+  .recipe_info_comments 
+    - @recipe.comments.each do |comment|
+      .comment
+        p.name = comment.user.username
+        p.body = comment.body

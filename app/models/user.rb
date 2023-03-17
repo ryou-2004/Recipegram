@@ -55,7 +55,7 @@ class User < ApplicationRecord
   end
 
   def comment(comment, recipe_id)
-    comments.create(comment: comment, recipe_id: recipe_id)
+    comments.create(body: comment, recipe_id: recipe_id)
   end
 
   def uncomment(comment_id)
