@@ -9,10 +9,10 @@
     .recipe_reaction 
       = button_to recipe_comment_path(recipe.id), method: :get do 
         = image_tag ('comment.png'), class:'reaction-image'
-      p = "#{recipe.commusers.count}"
+      p.count = "#{recipe.commusers.count}"
       = button_to recipe_favorite_path(recipe.id), method: :post do
         = image_tag ('retweet_shape.png'), class:'reaction-image'
-      p 8
+      p.count 8
       - if current_user!=nil
         -if current_user.favoriting?(recipe)
           = button_to recipe_favorite_path(recipe.id), method: :delete do
@@ -22,7 +22,7 @@
             = image_tag ('heart_shape.png'), class:'reaction-image'
       -else # ログイン処理に飛ばす
         p |ログインしてください
-      p = "#{recipe.favousers.count}"
+      p.count = "#{recipe.favousers.count}"
     p.update 
       = recipe.updated_at.strftime("%Y-%m-%d %H:%M")
       | 更新 
