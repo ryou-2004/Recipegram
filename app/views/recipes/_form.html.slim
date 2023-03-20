@@ -14,10 +14,10 @@
   p 
     = f.label :hashtags, "ハッシュタグ"
     .hashtag_btn_ctrl 
-        = f.button '＋', type: :button, class:'plus'
-        = f.button 'ー', type: :button, class:'minus'
-    .hashtags
-      = text_field_tag :hashtag, '',class:'hashtag_field'
+      = f.button '＋', type: :button, class:'plus'
+      = f.button 'ー', type: :button, class:'minus'
+  p.hashtags
+    = text_field_tag :hashtag, '',class:'hashtag_field'
 
   = hidden_field_tag 'hashtags', value: '', id: "hashtags"
 
