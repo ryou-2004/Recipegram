@@ -13,15 +13,20 @@
 
   p 
     = f.label :hashtags, "ハッシュタグ"
-    = text_field_tag :hashtag
-    = text_field_tag :hashtag
-    = text_field_tag :hashtag
+    .hashtags
+      = text_field_tag :hashtag
+    .hashtag_btn_ctrl 
+        = f.button '＋', type: :button, class:'pluss'
+        = f.button 'ー', type: :button, class:'minus'
 
   = hidden_field_tag 'hashtags', value: '', id: "hashtags"
 
   p.submit-fixed = f.submit "登録",class:"recipe_submit"
 
 javascript:
+
+
+  //ハッシュタグを空白区切りにしてコントローラに送信
   $('form').submit(function(event){
     let hashtags = $("[name='hashtag']");
     let values = [];
