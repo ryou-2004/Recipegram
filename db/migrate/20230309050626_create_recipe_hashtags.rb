@@ -2,6 +2,7 @@
 
 class CreateRecipeHashtags < ActiveRecord::Migration[7.0]
   def change
-    create_table :recipe_hashtags, &:timestamps
+
+    t.timestamps
   end
 end
