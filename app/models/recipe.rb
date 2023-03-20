@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Recipe < ApplicationRecord
+  default_scope -> { order(created_at: :desc) }
   belongs_to :user
   attachment :image
 
@@ -21,4 +22,6 @@ class Recipe < ApplicationRecord
   has_many :hashtags, through: :recipehashtags, source: :hashtag
 
   has_many :commenthashtags
+  # 通知
+  has_many :notifications, dependent: :destroy
 end

@@ -20,4 +20,5 @@ Rails.application.routes.draw do
   get 'hashtags', to: 'hashtags#show'
   get 'hashtags/:hashtag', to: 'hashtags#show', as: 'search_route'
   post 'hashtags/', to: 'hashtags#search', as: 'search_post_route'
+  resources :notifications, only: :index
 end

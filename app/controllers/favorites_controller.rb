@@ -3,7 +3,8 @@
 class FavoritesController < ApplicationController
   # いいねするとき
   def create
-    current_user.favorite(params[:recipe_id])
+    recipe = current_user.favorite(params[:recipe_id])
+    recipe.create_notification_like!(current_user)
     redirect_to request.referer
   end
 
