@@ -5,7 +5,7 @@
     .search_box 
       == render 'search', tagname: @hashtag_name
   .container
-    .tabbox.box-show
+    .tabbox.box_show
       - if !@recipes.nil?
         == render 'recipes/recipe_list', recipes: @recipes
       - elsif not @hashtag_name.blank?
