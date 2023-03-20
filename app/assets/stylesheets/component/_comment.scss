@@ -4,10 +4,6 @@
     flex-direction: row;
     padding: 10px;
   }
-  .profile_image {
-    width: 48px;
-    margin-right: 10px;
-  }
   .profile{
     display: flex;
     flex-direction: row;
@@ -17,6 +13,10 @@
     .update{
       color: rgb(83, 100, 113);
     }
+  }
+  .profile_image {
+    width: 48px;
+    margin-right: 10px;
   }
   .body{
     margin-top: 1px;

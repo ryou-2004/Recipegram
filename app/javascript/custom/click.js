@@ -1,9 +1,9 @@
 $(function(){
   $('.tab').on('click',function(e){
-    $('.tab-active').removeClass('tab-active');
-    $(this).addClass('tab-active');
-    $('.box-show').removeClass('box-show');
+    $('.tab_active').removeClass('tab_active');
+    $(this).addClass('tab_active');
+    $('.box_show').removeClass('box_show');
     const index = $(this).index();
-    $('.tabbox').eq(index).addClass('box-show');
+    $('.tabbox').eq(index).addClass('box_show');
   });
 });
