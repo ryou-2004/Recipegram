@@ -4,7 +4,7 @@ div.container_recipe.center_container
       li.tab.tab_active
         .element
           span = '最新'
-          .select_tab
+          #select_tab
       li.tab
         .element
           span = 'フォロー中'
@@ -46,3 +46,16 @@ div.container_recipe.center_container
         p = link_to '気まぐれクック', recipes_path
         p = link_to '気まぐれクック', recipes_path
         p = link_to '気まぐれクック', recipes_path
+
+javascript:
+  $(function(){
+    console.log('set')
+    $('.tab').on('click',function(){
+      $('.tab_active').removeClass('tab_active');
+      $(this).addClass('tab_active');
+      $('.box_show').removeClass('box_show');
+      const index = $(this).index();
+      $('.tabbox').eq(index).addClass('box_show');
+      $('#select_tab').appendTo('.tab_active .element');
+    });
+  });
