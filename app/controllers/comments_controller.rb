@@ -4,7 +4,8 @@ class CommentsController < ApplicationController
   end
 
   def create
-    current_user.comment(params[:comment], params[:recipe_id])
+    comment = current_user.comment(params[:comment], params[:recipe_id])
+    comment.create_notification_comment!(current_user, comment.id)
     redirect_to request.referer
   end
 
