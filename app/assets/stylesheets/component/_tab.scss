@@ -8,7 +8,6 @@
     text-align: center;
     flex: 1;
     font-size: 1.25em;
-    color: black;
   }
   .select_now{
     font-weight: bold;
@@ -22,4 +21,24 @@
 }
 .tab_active{
   font-weight: bold;
+  color: #0f1419;
+}
+.tab{
+  color: #536471;
+  flex: 1;
+  height: 100%;
+  .element{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    position: relative;
+    height: 100%;
+  }
+  .select_tab{
+    background-color: rgb(29, 155, 240);
+    height: 4px;
+    width: 50px;
+    position: absolute;
+    bottom: 0px;
+  }
 }

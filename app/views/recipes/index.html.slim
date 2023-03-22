@@ -1,9 +1,16 @@
 div.container_recipe.center_container
   h1.page_title ホーム
   ul.tab_buttons
-      p.tab.tab-active = '最新'
-      p.tab = 'フォロー中'
-      p.tab = '人気順'
+      li.tab.tab_active
+        .element
+          span = '最新'
+          .select_tab
+      li.tab
+        .element
+          span = 'フォロー中'
+      li.tab
+        .element
+          span = '人気順'
   .container
     .tabbox.box_show
       == render 'recipe_list', recipes: @recipes
