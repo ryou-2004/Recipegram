@@ -10,32 +10,40 @@
   }
   .card {
     width: 100%;
-    height: 500px;
+    height: min-content;
     border-bottom: 1px solid rgb(239, 243, 244);
     padding: 2%;
     border-radius: 0;
-    .recipe_img {
-      width: 400px;
-      height: 400px;
-      .image {
-        margin-left: auto;
-        margin-right: auto;
-        height: 60%;
-      }
-    }
-    .user_profile {
+    flex-direction: row;
+    display: flex;
+    .left {
       display: flex;
       align-items: center;
-      width: 100%;
-      height: 125px;
+      flex-basis: 48px;
+      align-items: flex-start;
       .profile_image {
-        width: 75px;
-        height: 75px;
+        width: 48px;
+        height: 48px;
       }
       .user_name {
         font-size: 30px;
         margin-left: 20px;
       }
+    }
+    .right{
+      width: 100%;
+      .recipe_img {
+        margin-top: 20px;  
+        display: block;
+        .image {
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+    }
+    .top{
+      display: flex;
+      justify-content: space-between;
     }
     .recipe_reaction{
       display: flex;
