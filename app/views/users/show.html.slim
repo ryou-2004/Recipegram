@@ -20,15 +20,16 @@
         = link_to "#{@user.followings.count}フォロー", user_followings_path(@user.id)
         = link_to "#{@user.followers.count}フォロワー", user_followers_path(@user.id)
       .profile = simple_format @user.profile
-  .user_show
-    - @user.recipes.each do |recipe|
-      .card
-        .recipe_img
-          = attachment_image_tag recipe, :image
-        .buttons 
-          = button_to "このレシピを見る", recipe_path(recipe), method: :get
-          - if current_user != nil
-            - if @user.id == current_user.id
-              = button_to "このレシピを編集する", edit_recipe_path(recipe), method: :get
-              = button_to "このレシピを削除する", recipe_path(recipe), { method: :delete, form: { data: { turbo_confirm: "本当に削除しますか？" } } }
-        p #{recipe.updated_at.strftime("%Y-%m-%d %H:%M")}更新
+  .container_recipe
+    == render 'recipes/recipe_list', recipes:@user.recipes
+    /- @user.recipes.each do |recipe|
+    /  .card
+    /    .recipe_img
+    /      = attachment_image_tag recipe, :image
+    /    .buttons 
+    /      = button_to "このレシピを見る", recipe_path(recipe), method: :get
+    /      - if current_user != nil
+    /        - if @user.id == current_user.id
+    /          = button_to "このレシピを編集する", edit_recipe_path(recipe), method: :get
+    /          = button_to "このレシピを削除する", recipe_path(recipe), { method: :delete, form: { data: { turbo_confirm: "本当に削除しますか？" } } }
+    /    p #{recipe.updated_at.strftime("%Y-%m-%d %H:%M")}更新
