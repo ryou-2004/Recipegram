@@ -3,8 +3,8 @@
 class RelationshipsController < ApplicationController
   # フォローするとき
   def create
-    user = current_user.follow(params[:user_id])
-    user.create_notification_follow!(current_user)
+    relationship = current_user.follow(params[:user_id])
+    relationship.followed.create_notification_follow!(current_user)
     redirect_to request.referer
   end
 
