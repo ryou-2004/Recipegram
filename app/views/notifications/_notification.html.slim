@@ -1,35 +1,28 @@
 - notifications.each do |notification|
   - visitor = notification.visitor
   - visited = notification.visited
-  .form-inline
-    span
-      = link_to user_path(visitor) do
-        /= image_tag avatar_url(visitor).to_s, class: "icon_mini"
-        = attachment_image_tag visitor, :profile_image, fallback: 'no-image.png', class: "profile_image is-rounded"
-        strong
-          = visitor.username
-      = 'さんが'
+  .notification_element
+    p = link_to user_path(visitor) do
+      = attachment_image_tag visitor, :profile_image, fallback: 'no-image.png', class: "profile_image is-rounded"
+    = link_to visitor.username, user_path(visitor)
+    = 'さんが'
 
-      - case notification.action
-      - when 'follow' then
-        = "あなたをフォローしました"
-      - when 'like' then
-        = link_to 'あなたの投稿', recipe_path(notification.recipe), style: "font-weight: bold;"
-        = "にいいねしました"
-      - when 'comment' then
-        - if notification.recipe.user_id == visited.id
-          = link_to "あなたの投稿", notification.recipe, style: "font-weight: bold;"
-        - else
-          span
-            = link_to recipe_path(notification.recipe) do
-              /= image_tag avatar_url(notification.recipe.user).to_s, class: "icon_mini" 
-              = attachment_image_tag notification.recipe.user, :profile_image, fallback: 'no-image.png', class: "profile_image is-rounded"
-              strong
-                = notification.recipe.user.name + 'さんの投稿'
-        = "にコメントしました"
-        p.text-muted.mb-0
-          = Comment.find_by(id: notification.comment_id)&.body
-
-  .small.text-muted.text-right
-    = time_ago_in_words(notification.created_at).upcase
-  hr
+    - case notification.action
+    - when 'follow' then
+      = "あなたをフォローしました"
+    - when 'like' then
+      = link_to 'あなたの投稿', recipe_path(notification.recipe), style: "font-weight: bold;"
+      = "にいいねしました"
+    - when 'comment' then
+      - if notification.recipe.user_id == visited.id
+        = link_to "あなたの投稿", notification.recipe, style: "font-weight: bold;"
+      - else
+        span
+          = link_to recipe_path(notification.recipe) do
+            = attachment_image_tag notification.recipe.user, :profile_image, fallback: 'no-image.png', class: "profile_image is-rounded"
+            strong
+              = notification.recipe.user.name + 'さんの投稿'
+      = "にコメントしました"
+      p.text-muted.mb-0
+        = Comment.find_by(id: notification.comment_id)&.body
+    p = time_ago_in_words(notification.created_at).upcase
