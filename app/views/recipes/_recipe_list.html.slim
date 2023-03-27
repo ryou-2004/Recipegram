@@ -6,8 +6,21 @@
     .right
       .top
         = link_to recipe.user.username, user_path(recipe.user.id), class:"user_name"
-        div.dropdown
-          button.dropbtn Options
+        = button_tag '・・・', type: 'button', class: 'openbtn1'
+        div.g-nav
+          ul
+            li 
+              p こぶた
+            li 
+              p たぬき
+            li 
+              p キツネ
+            li 
+              p こぶた
+            li 
+              p たぬき
+            li 
+              p キツネ
       = link_to recipe_path(recipe), class:'recipe_img' do
         = attachment_image_tag recipe, :image
       .recipe_reaction 
@@ -30,3 +43,17 @@
       p.update 
         = recipe.updated_at.strftime("%Y-%m-%d %H:%M")
         | 更新 
+javascript:
+  $(document).ready(function(){
+    console.log('set')
+    $(".openbtn1").on("click", function(){//ボタンがクリックされたら
+      $(this).toggleClass('active');//ボタン自身に activeクラスを付与し
+      $(this).siblings('.g-nav').toggleClass('panelactive');//ナビゲーションにpanelactiveクラスを付与
+      console.log('click')
+    });
+
+    $("#g-nav a").click(function () {//ナビゲーションのリンクがクリックされたら
+      $(".openbtn1").removeClass('active');//ボタンの activeクラスを除去し
+      $("#g-nav").removeClass('panelactive');//ナビゲーションのpanelactiveクラスも除去
+    });
+  });
