@@ -1,24 +1,18 @@
 div.container_recipe.center_container
   h1.page_title ホーム
   ul.tab_buttons
-      li.tab.tab_active
-        .element
-          span = '最新'
-          #select_tab
       li.tab
         .element
-          span = 'フォロー中'
+          = link_to '最新', change_index_path(display_index: 0), method: :post
       li.tab
         .element
-          span = '人気順'
+          = link_to 'フォロー中', change_index_path(display_index: 1), method: :post
+      li.tab
+        .element
+          = link_to '人気順', change_index_path(display_index: 2), method: :post
   .container
-    .tabbox.box_show
+    -if @recipes != nil
       == render 'recipe_list', recipes: @recipes
-    .tabbox 
-      -current_user.followings.each do |user|
-        == render 'recipe_list', recipes: user.recipes
-    .tabbox 
-      p 人気順
 .side-bar 
   .top-margin
   .side-element
@@ -49,12 +43,18 @@ div.container_recipe.center_container
 
 javascript:
   $(function(){
-    $('.tab').on('click',function(){
-      $('.tab_active').removeClass('tab_active');
-      $(this).addClass('tab_active');
-      $('.box_show').removeClass('box_show');
-      const index = $(this).index();
-      $('.tabbox').eq(index).addClass('box_show');
-      $('#select_tab').appendTo('.tab_active .element');
-    });
+    var index = "#{@display_index}";
+    console.log(index);
+    $('.tab').eq(index).addClass('tab_active');
+    var $select_tab = $('<div>', {id: 'select_tab' });
+    $('.tab_active .element').append($select_tab);
+
+    //$('.tab').on('click',function(){
+    //  $('.tab_active').removeClass('tab_active');
+    //  $(this).addClass('tab_active');
+    //  $('.box_show').removeClass('box_show');
+    //  const index = $(this).index();
+    //  $('.tabbox').eq(index).addClass('box_show');
+    //  $('#select_tab').appendTo('.tab_active .element');
+    //});
   });

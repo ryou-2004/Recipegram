@@ -16,7 +16,7 @@ html
         = link_to root_path, class: "nav-bar-item" do
           h1.title.is-4[style="font-family: cursive;"]
             | Recipegram
-        = link_to recipes_path, class: "nav-bar-item button" do 
+        = link_to change_index_path(display_index: session[:home_display_index]), method: :post, class: "nav-bar-item button" do
           .menu-svg= image_tag 'mainMenu/home.svg', inline: true
           span ホーム
         = link_to hashtags_path, class: "nav-bar-item button" do 

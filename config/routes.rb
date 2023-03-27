@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resource :comment, only: %i[create destroy show]
     get 'like' => 'favorites#favousers', as: 'users'
   end
+  post 'change_index', to: 'recipes#'
 
   get 'hashtags', to: 'hashtags#show'
   get 'hashtags/:hashtag', to: 'hashtags#show', as: 'search_route'

@@ -4,10 +4,23 @@ class RecipesController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
-    @recipes = Recipe.all
+    @display_index = session[:home_display_index]
+    case @display_index
+    when '0'
+      @recipes = Recipe.all
+    when '1'
+      @recipes = Recipe.where(user: current_user.followings)
+    when '2'
+      # 人気レシピ
+    end
     @day_ranking = HashtagCount.generate_ranking(1, Date.today, Date.today)
     @week_ranking = HashtagCount.generate_ranking(1, Date.today.ago(7.days), Date.today)
     @month_ranking = HashtagCount.generate_ranking(1, Date.today.ago(30.days), Date.today)
+  end
+
+  def change_index
+    session[:home_display_index] = params[:display_index]
+    redirect_to action: 'index'
   end
 
   def show
