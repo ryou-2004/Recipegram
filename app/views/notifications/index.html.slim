@@ -1,9 +1,10 @@
-- notifications = @notifications.where.not(visitor_id: current_user.id)
-- if notifications.exists?
-  .center_container
-    h1.page_title 通知欄
-    .container
-      == render 'notification', notifications: notifications
-- else
-  p
-    | 通知はありません
+- if @notifications != nil
+  - notifications = @notifications.where.not(visitor_id: current_user.id)
+  - if notifications.exists?
+    .center_container
+      h1.page_title 通知欄
+      .container
+        == render 'notification', notifications: notifications
+  - else
+    p
+      | 通知はありません
