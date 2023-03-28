@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
   post 'change_index', to: 'recipes#'
   post 'fixed_recipe', to: 'recipes#'
+  post 'un_fixed_recipe', to:'recipes#'
 
   get 'hashtags', to: 'hashtags#show'
   get 'hashtags/:hashtag', to: 'hashtags#show', as: 'search_route'

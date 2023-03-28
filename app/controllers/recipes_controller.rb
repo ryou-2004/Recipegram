@@ -74,9 +74,13 @@ class RecipesController < ApplicationController
   end
 
   def fixed_recipe
-    logger.debug("params[:recipe]#{params[:recipe]}")
     current_user.update(fixed_recipe_id: params[:recipe])
-    redirect_to recipes_path
+    redirect_back(fallback_location: root_path)
+  end
+
+  def un_fixed_recipe
+    current_user.update(fixed_recipe_id: -1)
+    redirect_back(fallback_location: root_path)
   end
 
   private

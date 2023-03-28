@@ -12,16 +12,19 @@
         div.recipe_edit
           ul
             - user = recipe.user
-            -if current_user == user 
+            - if current_user == user 
               li 
                 = link_to "削除", recipe_path(recipe), { method: :delete, form: { data: { turbo_confirm: "本当に削除しますか？" } } }
               li
-                = link_to "固定する", fixed_recipe_path(recipe: recipe), method: :post
+                - if recipe == current_user.fixed_recipe
+                  = link_to "固定解除", un_fixed_recipe_path(recipe: recipe), method: :post
+                - else
+                  = link_to "固定する", fixed_recipe_path(recipe: recipe), method: :post
               li
                 = link_to "編集する", edit_recipe_path(recipe), method: :get
-            -else
+            - else
               li 
-                -if current_user.following?(user)
+                - if current_user.following?(user)
                   = link_to "フォロー解除", user_relationships_path(user.id), method: :delete
                 - else
                   = link_to "フォローする", user_relationships_path(user.id), method: :post
