@@ -12,6 +12,8 @@ class RecipesController < ApplicationController
       @recipes = Recipe.where(user: current_user.followings)
     when '2'
       # 人気レシピ
+    else
+      @recipes = Recipe.all
     end
     @day_ranking = HashtagCount.generate_ranking(1, Date.today, Date.today)
     @week_ranking = HashtagCount.generate_ranking(1, Date.today.ago(7.days), Date.today)
