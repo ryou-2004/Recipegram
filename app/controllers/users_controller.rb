@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @recipes = @user.recipes.reject { |recipe| recipe == @user.fixed_recipe }
   end
 
   def edit

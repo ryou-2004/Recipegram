@@ -24,4 +24,4 @@
     - if @user.fixed_recipe != nil
       p 固定ツイート
       == render 'recipes/recipe_card', recipe: @user.fixed_recipe
-    == render 'recipes/recipe_list', recipes: @user.recipes
+    == render 'recipes/recipe_list', recipes: @recipes
