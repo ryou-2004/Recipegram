@@ -11,9 +11,12 @@
           ul
             - user = recipe.user
             -if current_user == user 
-              li 削除
-              li プロフィールに固定する
-              li 編集する
+              li 
+                = link_to "削除", recipe_path(recipe), { method: :delete, form: { data: { turbo_confirm: "本当に削除しますか？" } } }
+              li
+                p プロフィールに固定する
+              li
+                = link_to "編集する", edit_recipe_path(recipe), method: :get
             -else
               li 
                 -if current_user.following?(user)
