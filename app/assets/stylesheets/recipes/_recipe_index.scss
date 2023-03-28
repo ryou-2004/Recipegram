@@ -16,6 +16,10 @@
     border-radius: 0;
     flex-direction: column;
     display: flex;
+    .recipe{
+      flex-direction: row;
+      display: flex;
+    }
     .left {
       display: flex;
       align-items: center;
