@@ -1,54 +1,6 @@
 - recipes.each do |recipe|
-  .card
-    .left
-      = link_to user_path(recipe.user.id) do
-        = attachment_image_tag recipe.user, :profile_image, fallback: "no-image.png"
-    .right
-      .top
-        = link_to recipe.user.username, user_path(recipe.user.id), class:"user_name"
-        = button_tag '・・・', type: 'button', class: 'openbtn1'
-        div.recipe_edit
-          ul
-            - user = recipe.user
-            -if current_user == user 
-              li 
-                = link_to "削除", recipe_path(recipe), { method: :delete, form: { data: { turbo_confirm: "本当に削除しますか？" } } }
-              li
-                p プロフィールに固定する
-              li
-                = link_to "編集する", edit_recipe_path(recipe), method: :get
-            -else
-              li 
-                -if current_user.following?(user)
-                  = link_to "フォロー解除", user_relationships_path(user.id), method: :delete
-                - else
-                  = link_to "フォローする", user_relationships_path(user.id), method: :post
-              li
-                p = "#{user.username}さんをミュート"
-              li 
-                p = "#{user.username}さんをブロック"
-      = link_to recipe_path(recipe), class:'recipe_img' do
-        = attachment_image_tag recipe, :image
-      .recipe_reaction 
-        = button_to recipe_comment_path(recipe.id), method: :get do 
-          = image_tag ('comment.png'), class:'reaction-image'
-        p.count = "#{recipe.commusers.count}"
-        = button_to recipe_favorite_path(recipe.id), method: :post do
-          = image_tag ('retweet_shape.png'), class:'reaction-image'
-        p.count 8
-        - if current_user!=nil
-          -if current_user.favoriting?(recipe)
-            = button_to recipe_favorite_path(recipe.id), method: :delete do
-              = image_tag ('heart.png'), class:'reaction-image'
-          -else
-            = button_to recipe_favorite_path(recipe.id), method: :post do
-              = image_tag ('heart_shape.png'), class:'reaction-image'
-        -else # ログイン処理に飛ばす
-          p |ログインしてください
-        p.count = "#{recipe.favousers.count}"
-      p.update 
-        = recipe.updated_at.strftime("%Y-%m-%d %H:%M")
-        | 更新 
+  == render 'recipes/recipe_card', recipe: recipe
+
 javascript:
   $(document).ready(function() {
     $(".openbtn1").on("click", function(){//ボタンがクリックされたら

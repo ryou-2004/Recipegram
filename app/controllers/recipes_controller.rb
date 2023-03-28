@@ -73,6 +73,12 @@ class RecipesController < ApplicationController
     redirect_to recipe_path
   end
 
+  def fixed_recipe
+    logger.debug("params[:recipe]#{params[:recipe]}")
+    current_user.update(fixed_recipe_id: params[:recipe])
+    redirect_to recipes_path
+  end
+
   private
 
   def recipe_params

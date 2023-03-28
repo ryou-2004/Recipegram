@@ -13,7 +13,7 @@
             li 
               = link_to "削除", recipe_path(recipe), { method: :delete, form: { data: { turbo_confirm: "本当に削除しますか？" } } }
             li
-              p プロフィールに固定する
+              = link_to "固定する", fixed_recipe_path(recipe: recipe), method: :post
             li
               = link_to "編集する", edit_recipe_path(recipe), method: :get
           -else

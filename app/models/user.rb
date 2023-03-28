@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
   validates :username, presence: true
 
-  belongs_to :fixed_recipe, class_name: 'Recipe', optional: true
+  belongs_to :fixed_recipe, class_name: 'Recipe', optional: true, foreign_key: 'fixed_recipe_id'
 
   has_many :favorites, class_name: 'Favorite', foreign_key: 'user_id', dependent: :destroy
   # いいねしたレシピ一覧画面で使う
