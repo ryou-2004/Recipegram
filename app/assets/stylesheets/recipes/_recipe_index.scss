@@ -74,8 +74,10 @@
   right: 10%;
   width: max-content;
   height: min-content;
-  background:#999;
   border-radius: 15px;
+  background-color: white;
+  box-shadow: rgba(101, 119, 134, 0.2) 0 0 15px,
+    rgba(101, 119, 134, 0.15) 0 0 3px 1px;
   /*動き*/
   transform-origin: top;
   transform: scale(1, 0);
