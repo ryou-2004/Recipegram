@@ -86,3 +86,14 @@
   transform: scale(1, 1);
   transition-duration: 200ms;
 }
+
+.closepanel{
+  position: fixed;
+  z-index: 90;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100vh;
+  width: 100vh;
+}

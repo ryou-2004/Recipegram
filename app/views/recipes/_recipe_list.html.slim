@@ -47,14 +47,16 @@
         = recipe.updated_at.strftime("%Y-%m-%d %H:%M")
         | 更新 
 javascript:
-  $(document).ready(function(){
+  $(document).ready(function() {
     $(".openbtn1").on("click", function(){//ボタンがクリックされたら
       $(this).toggleClass('active');//ボタン自身に activeクラスを付与し
       $(this).siblings('.recipe_edit').toggleClass('editactive');//ナビゲーションにpanelactiveクラスを付与
+      var $closepanel = $('<div>', {class: 'closepanel' });
+      $(this).parent().append($closepanel);
     });
-
-    $(".recipe_edit li").click(function () {//ナビゲーションのリンクがクリックされたら
+    $(document).on('click', '.closepanel, .recipe_edit li', function() {
       $(".openbtn1").removeClass('active');//ボタンの activeクラスを除去し
       $(".recipe_edit").removeClass('editactive');//ナビゲーションのpanelactiveクラスも除去
+      $(".closepanel").remove();
     });
   });
