@@ -17,9 +17,9 @@
             -else
               li 
                 -if current_user.following?(user)
-                  p = "#{user.username}さんのフォローを解除"
-                -else
-                  p = "#{user.username}さんをフォロー"
+                  = link_to "フォロー解除", user_relationships_path(user.id), method: :delete
+                - else
+                  = link_to "フォローする", user_relationships_path(user.id), method: :post
               li
                 p = "#{user.username}さんをミュート"
               li 

@@ -75,10 +75,14 @@
   width: max-content;
   height: min-content;
   background:#999;
-  padding: .75em;
+  border-radius: 15px;
   /*動き*/
   transform-origin: top;
   transform: scale(1, 0);
+}
+
+.recipe_edit li{
+  padding: 12px 16px;
 }
 
 /*アクティブクラスがついたら*/
