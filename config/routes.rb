@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
   devise_for :users
-  root to: 'home#index'
+  root to: 'recipes#index'
   resources :users do
     resource :relationships, only: %i[create destroy]
     get 'followings' => 'relationships#followings', as: 'followings'
