@@ -66,9 +66,9 @@
   }
 }
 
-.g-nav{
+.recipe_edit{
   position:absolute;
-  z-index: 999;
+  z-index: 100;
   /*ナビのスタート位置と形状*/
   top: 0;
   right: 10%;
@@ -82,7 +82,7 @@
 }
 
 /*アクティブクラスがついたら*/
-.g-nav.panelactive{
+.recipe_edit.editactive{
   transform: scale(1, 1);
   transition-duration: 200ms;
 }

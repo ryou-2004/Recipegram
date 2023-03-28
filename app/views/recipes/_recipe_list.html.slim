@@ -7,7 +7,7 @@
       .top
         = link_to recipe.user.username, user_path(recipe.user.id), class:"user_name"
         = button_tag '・・・', type: 'button', class: 'openbtn1'
-        div.g-nav
+        div.recipe_edit
           ul
             - user = recipe.user
             -if current_user == user 
@@ -20,12 +20,10 @@
                   p = "#{user.username}さんのフォローを解除"
                 -else
                   p = "#{user.username}さんをフォロー"
+              li
+                p = "#{user.username}さんをミュート"
               li 
-                  p = "#{user.username}さんをブロック"
-              li キツネ
-              li こぶた
-              li たぬき
-              li キツネ
+                p = "#{user.username}さんをブロック"
       = link_to recipe_path(recipe), class:'recipe_img' do
         = attachment_image_tag recipe, :image
       .recipe_reaction 
@@ -50,15 +48,13 @@
         | 更新 
 javascript:
   $(document).ready(function(){
-    console.log('set')
     $(".openbtn1").on("click", function(){//ボタンがクリックされたら
       $(this).toggleClass('active');//ボタン自身に activeクラスを付与し
-      $(this).siblings('.g-nav').toggleClass('panelactive');//ナビゲーションにpanelactiveクラスを付与
-      console.log('click')
+      $(this).siblings('.recipe_edit').toggleClass('editactive');//ナビゲーションにpanelactiveクラスを付与
     });
 
-    $("#g-nav a").click(function () {//ナビゲーションのリンクがクリックされたら
+    $(".recipe_edit li").click(function () {//ナビゲーションのリンクがクリックされたら
       $(".openbtn1").removeClass('active');//ボタンの activeクラスを除去し
-      $("#g-nav").removeClass('panelactive');//ナビゲーションのpanelactiveクラスも除去
+      $(".recipe_edit").removeClass('editactive');//ナビゲーションのpanelactiveクラスも除去
     });
   });
